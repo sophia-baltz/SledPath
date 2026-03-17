@@ -38,4 +38,19 @@ struct Edge{
     std::string sourceOfData;
 };
 
+//functions
+//assign trail name based on <trk><name>
+//asign first coordinate to node
+//give that node id and put id into starNodeId
+//go through all coordinates, make coordinate out of
+//put each coordinate into vector in order
+//reach last coordinate because next <trk><name>
+//give that coordinate node
+//asign that node to lastNode in edge
+
+
+
+
+
+
 #endif
