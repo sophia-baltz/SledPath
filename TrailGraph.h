@@ -41,7 +41,6 @@ struct Edge{
     std::string sourceOfData;
 };
 
-<<<<<<< HEAD
 struct TrailGraph {
     std::vector<Node> nodes;
     std::vector<Edge> edges;
@@ -58,9 +57,8 @@ struct TrailGraph {
 //5. turn into graph
 TrailGraph parseGPXFile(const std::string& filename);
 
-=======
+
 //functions
->>>>>>> 45c17d70f3c482bf3a1052c2a78b37d1ed158122
 //assign trail name based on <trk><name>
 //asign first coordinate to node
 //give that node id and put id into starNodeId
@@ -70,9 +68,4 @@ TrailGraph parseGPXFile(const std::string& filename);
 //give that coordinate node
 //asign that node to lastNode in edge
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 45c17d70f3c482bf3a1052c2a78b37d1ed158122
 #endif
