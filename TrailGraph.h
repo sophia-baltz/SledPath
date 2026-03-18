@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <cmath>
 #include <stdexcept>
-#include "tinyxml2.h"
+#include "Root directory/tinyxml2.h"
 
 struct Coordinate{
     double lat;
@@ -47,8 +47,6 @@ struct TrailGraph {
 };
 
 //functions
-
-
 //this file should go through the large gpx file
 //1. open the xml file
 //2. find each <trk>
