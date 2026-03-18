@@ -21,7 +21,7 @@ struct Edge{
     int endNodeId;
 
     std::string TrailId;
-    std::string TrailName;
+    //std::string TrailName;
 
     std::vector<Coordinate> trailShape;
     
