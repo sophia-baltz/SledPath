@@ -57,6 +57,7 @@ struct TrailGraph {
 //5. turn into graph
 TrailGraph parseGPXFile(const std::string& filename);
 
+
 //functions
 //assign trail name based on <trk><name>
 //asign first coordinate to node
@@ -66,6 +67,5 @@ TrailGraph parseGPXFile(const std::string& filename);
 //reach last coordinate because next <trk><name>
 //give that coordinate node
 //asign that node to lastNode in edge
-
 
 #endif
