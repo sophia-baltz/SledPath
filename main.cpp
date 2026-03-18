@@ -1,5 +1,6 @@
 #include <iostream>
+#include "include/TrailGraph.h"
 
 int main(int, char**){
-    std::cout << "Hello, from SledPath!\n";
+    parseGPXFile("../SnowmobileUP.gpx");
 }
