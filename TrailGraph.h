@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <cmath>
 #include <stdexcept>
-#include "tinyxml2.h"
+#include "Root directory/tinyxml2.h"
 
 struct Coordinate{
     double lat;
@@ -47,8 +47,6 @@ struct TrailGraph {
 };
 
 //functions
-
-
 //this file should go through the large gpx file
 //1. open the xml file
 //2. find each <trk>
@@ -56,16 +54,5 @@ struct TrailGraph {
 //4. collect all edges and nodes
 //5. turn into graph
 TrailGraph parseGPXFile(const std::string& filename);
-
-//functions
-//assign trail name based on <trk><name>
-//asign first coordinate to node
-//give that node id and put id into starNodeId
-//go through all coordinates, make coordinate out of
-//put each coordinate into vector in order
-//reach last coordinate because next <trk><name>
-//give that coordinate node
-//asign that node to lastNode in edge
-
 
 #endif
