@@ -61,6 +61,55 @@ gpx
   while trkname -> getText() == cuurname  
   */
         
+/*
+This is the Haversine formula!
+we are using haversine because accurately depicts earth as sphere.
+we are not making own haversine because that would be stupid! :))))))
+*/
+
+double toRadians(double degree) {
+    return degree * DEG_TO_RAD;
+}
+
+double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+    // Convert degrees to radians
+    lat1 = toRadians(lat1);
+    lon1 = toRadians(lon1);
+    lat2 = toRadians(lat2);
+    lon2 = toRadians(lon2);
+
+    // Haversine formula
+    double dLon = lon2 - lon1;
+    double dLat = lat2 - lat1;
+    double a = std::sin(dLat / 2.0) * std::sin(dLat / 2.0) +
+               std::cos(lat1) * std::cos(lat2) * 
+               std::sin(dLon / 2.0) * std::sin(dLon / 2.0);
+    double c = 2.0 * std::asin(std::sqrt(a));
+    double distance = EARTH_RADIUS_KM * c;
+
+    return distance;
+}
+
+double distanceHelper(std::vector<Coordinate> trailShape) {  
+    double totalDistance = 0;  
+    //iterate through vector
+    //find distance between each point call helper haversine
+    //add distance between each vector
+    //return distance
+
+    //add edge case for if size less than 2
+    for (unsigned i = 0; i < trailShape.size() - 2; i ++) {
+        double lat1 = trailShape[i].lat;
+        double lon1 = trailShape[i].lon;
+        double lat2 = trailShape[i + 1].lat;
+        double lon2 = trailShape[i + 1].lon;
+        totalDistance += calculateDistance(lat1, lon1, lat2, lon2);
+    }
+    return totalDistance;
+}
+
+
+
 Edge parseTrk(XMLElement* trk, int& edgeCount, int& nodeCount) {
     XMLElement* name = trk->FirstChildElement("name");
 
@@ -103,49 +152,4 @@ Edge parseTrk(XMLElement* trk, int& edgeCount, int& nodeCount) {
     newEdge.endNode = newEdge.trailShape.back();
     newEdge.distance = distanceHelper(newEdge.trailShape);
     return newEdge;
-}
-
-
-double distanceHelper(std::vector<Coordinate> trailShape) {  
-    double totalDistance = 0;  
-    //iterate through vector
-    //find distance between each point call helper haversine
-    //add distance between each vector
-    //return distance
-    for (unsigned i = 0; i < trailShape.size() - 2; i ++) {
-        double lat1 = trailShape[i].lat;
-        double lon1 = trailShape[i].lon;
-        double lat2 = trailShape[i + 1].lat;
-        double lon2 = trailShape[i + 1].lon;
-        totalDistance += calculateDistance(lat1, lon1, lat2, lon2);
-    }
-}
-
-/*
-This is the Haversine formula!
-we are using haversine because accurately depicts earth as sphere.
-we are not making own haversine because that would be stupid! :))))))
-*/
-
-double toRadians(double degree) {
-    return degree * DEG_TO_RAD;
-}
-
-double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
-    // Convert degrees to radians
-    lat1 = toRadians(lat1);
-    lon1 = toRadians(lon1);
-    lat2 = toRadians(lat2);
-    lon2 = toRadians(lon2);
-
-    // Haversine formula
-    double dLon = lon2 - lon1;
-    double dLat = lat2 - lat1;
-    double a = std::sin(dLat / 2.0) * std::sin(dLat / 2.0) +
-               std::cos(lat1) * std::cos(lat2) * 
-               std::sin(dLon / 2.0) * std::sin(dLon / 2.0);
-    double c = 2.0 * std::asin(std::sqrt(a));
-    double distance = EARTH_RADIUS_KM * c;
-
-    return distance;
 }

@@ -59,6 +59,7 @@ struct TrailGraph {
 //5. turn into graph
 TrailGraph parseGPXFile(const std::string& filename);
 Edge parseTrk(tinyxml2::XMLElement* trk, int& edgeCount, int& nodeCount);
+double toRadians(double degree);
 
 
 
@@ -71,5 +72,7 @@ Edge parseTrk(tinyxml2::XMLElement* trk, int& edgeCount, int& nodeCount);
 //reach last coordinate because next <trk><name>
 //give that coordinate node
 //asign that node to lastNode in edge
+
+
 
 #endif

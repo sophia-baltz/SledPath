@@ -11,7 +11,7 @@
 using namespace tinyxml2;
 
 TEST_CASE("GPX Parsed Correctly (file with one track)", "[GPX]") {
-    TrailGraph graph = parseGPXFile("../tests/UP_1faster.gpx");
+    TrailGraph graph = parseGPXFile("../tests/UP_1.gpx");
     REQUIRE(graph.edges.size() == 1);
     
     Edge e = graph.edges[0];
