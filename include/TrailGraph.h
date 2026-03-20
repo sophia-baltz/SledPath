@@ -8,6 +8,10 @@
 #include <stdexcept>
 #include "tinyxml2.h"
 
+const double EARTH_RADIUS_KM = 6371.0; 
+const double DEG_TO_RAD = M_PI / 180.0; 
+
+
 struct Coordinate{
     double lat;
     double lon;
@@ -20,8 +24,8 @@ struct Node{
 
 struct Edge{
     int id;
-    int startNodeId;
-    int endNodeId;
+    Coordinate startNode;
+    Coordinate endNode;
 
     std::string TrailId;
     //std::string TrailName;
@@ -30,7 +34,7 @@ struct Edge{
     
     double distance;
     //double estimatedMPH;
-    double weight;
+    //double weight;
 
     bool isOpen;
     bool snowmobileLegal;
@@ -54,6 +58,8 @@ struct TrailGraph {
 //4. collect all edges and nodes
 //5. turn into graph
 TrailGraph parseGPXFile(const std::string& filename);
+Edge parseTrk(tinyxml2::XMLElement* trk, int& edgeCount, int& nodeCount);
+
 
 
 //functions
